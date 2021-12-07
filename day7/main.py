@@ -13,8 +13,8 @@ def part_1():
 def part_2():
     with open("input.txt", "r") as f:
         a = list(map(int, f.read().split(",")))
-    used = 99999999999999999999999999999
-    for avg in tqdm(range(max(a))):
+    used = math.inf
+    for avg in tqdm([math.floor(np.mean(a)), round(np.mean(a))]):
         with open("input.txt", "r") as f:
             a = list(map(int, f.read().split(",")))
             usage = 0
@@ -28,8 +28,6 @@ def part_2():
                     elif value>avg:
                         used_here += usage
                         a[index] -= 1
-                    else:
-                        pass
         if used_here<used:
             used = used_here
     return used
